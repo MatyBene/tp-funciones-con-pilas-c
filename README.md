@@ -1,91 +1,34 @@
-# tp-funciones-con-pilas-c
+# Trabajo Práctico N° : Funciones con pilas
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "pila.h"
+NOTA: todas las funciones pedidas deben recibir por parámetro la/s pila/s cargadas con los datos. No se debe usar la función leer() dentro de la función, excepto en la función 1. 
 
-void cargarPilaRandom(Pila *p);
+Realizar todas las funciones en un mismo proyecto, para ir probando su correcto funcionamiento deberá desarrollar una función main, donde cree las variables y pilas que necesite, e invoque a las funciones como corresponda en cada caso.
 
-int main()
-{
-    char control;
-    int opcion;
+Se sugiere crear un menú de opciones para que el usuario del sistema ejecute cada una de las funciones cuando lo desee. Asimismo, utilizar una estructura switch que ejecute cada opción elegida, contenido dentro de un do-while, que finalice cuando el usuario lo requiera.
 
-    Pila dada;
-    inicpila(&dada);
+1. Hacer una función que permita ingresar varios elementos a una pila, tanto como quiera el usuario. 
+2. Hacer una función que pase todos los elementos de una pila a otra. 
+3. Hacer una función que pase todos los elementos de una pila a otra, pero conservando el orden. 
+4. Hacer una función que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.
+5. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 4. (Ordenamiento por selección)
+6. Hacer una función que inserta en una pila ordenada un nuevo elemento, conservando el orden de ésta. 
+7. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 6.  (Ordenamiento por inserción)
+8. Hacer una función que sume y retorne los dos primeros elementos de una pila (tope y anterior), sin alterar su contenido. 
+9. Hacer una función que calcule el promedio de los elementos de una pila, para ello hacer también una función que calcule la suma, otra para la cuenta y otra que divida. En total son cuatro funciones, y la función que calcula el promedio invoca a las otras 3. 
+10. Hacer una función que reciba una pila con números de un solo dígito (es responsabilidad de quien usa el programa) y que transforme esos dígitos en un número decimal. Por ejemplo, la pila:
 
-    do {
-        printf("TP 2 - FUNCIONES CON PILAS\n\n");
-        printf("1  -  Ejercicio 1\n");
-        printf("2  -  Ejercicio 2\n");
-        printf("3  -  Ejercicio 3\n");
-        printf("4  -  Ejercicio 4\n");
-        printf("5  -  Ejercicio 5\n");
-        printf("6  -  Ejercicio 6\n");
-        printf("7  -  Ejercicio 7\n");
-        printf("8  -  Ejercicio 8\n");
-        printf("9  -  Ejercicio 9\n");
-        printf("10  -  Ejercicio 10\n");
-        printf("11  -  Ejercicio 11\n");
-        printf("12  -  Ejercicio 12\n\n");
-        printf("Ingrese opcion numerica\n");
-        fflush(stdin);
-        scanf("%d", &opcion);
-        printf("Desea salir: s/n");
-        fflush(stdin);
-        scanf("%d", &control);
-        system("cls");
+1
 
-        switch(opcion){
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
-                break;
-            default:
-                printf("La opcion ingresada no es valida.");
-        }
+4
 
-    } while(control=='s');
+6
 
-    cargarPilaRandom(&dada);
+7
 
-    mostrar(&dada);
+5
 
-    return 0;
-}
+Debe retornar el número: 14675
 
-void cargarPilaRandom(Pila *p){
-    char control;
-
-    do
-    {
-        leer(p);
-
-        printf("\nDesea continuar? s/n");
-        fflush (stdin);
-        scanf("%c", &control);
-
-    }
-    while (control=='s');
-}
+Ejercicios extra: Con el fin de generar una experiencia de usuario diferente a la que otorga la librería se requiere desarrollar las siguientes funciones:
+- Realizar una función que cargue la pila sin utilizar la función leer.
+- Realizar una función que muestre la pila sin utilizar la función mostrar.
