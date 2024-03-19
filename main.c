@@ -5,6 +5,7 @@
 
 void cargarPila(Pila *p);
 void pasarElementos(Pila p, Pila *q);
+void pasarElementosConservandoOrden(Pila p, Pila *q);
 
 int main()
 {
@@ -54,9 +55,21 @@ int main()
                 mostrar(&dada);
                 printf("AUX");
                 mostrar(&aux);
+
                 break;
             case 3:
                 printf("3. Hacer una funcion que pase todos los elementos de una pila a otra, pero conservando el orden.\n\n");
+
+                Pila aux2;
+                inicpila(&aux2);
+
+                pasarElementosConservandoOrden(dada, &aux2);
+
+                printf("DADA");
+                mostrar(&dada);
+                printf("AUX2");
+                mostrar(&aux2);
+
                 break;
             case 4:
                 printf("4. Hacer una funcion que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.\n\n");
@@ -116,4 +129,12 @@ void pasarElementos(Pila p, Pila *q){
     while(!pilavacia(&p)){
         apilar(q, desapilar(&p));
     }
+}
+
+void pasarElementosConservandoOrden(Pila p, Pila *q){
+    Pila aux;
+    inicpila(&aux);
+
+    pasarElementos(p, &aux);
+    pasarElementos(aux, q);
 }
