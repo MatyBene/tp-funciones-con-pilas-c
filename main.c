@@ -6,6 +6,7 @@
 void cargarPila(Pila *p);
 void pasarElementos(Pila p, Pila *q);
 void pasarElementosConservandoOrden(Pila p, Pila *q);
+int encuentraEliminaRetornaMenorValor(Pila *p);
 
 int main()
 {
@@ -125,7 +126,7 @@ void cargarPila(Pila *p){
     while (control=='s');
 }
 
-void pasarElementos(Pila p, Pila *q){
+void pasarElementos(Pila p, Pila *q){ //Pila p es una copia de la pila dada. Pila *q hace referencia a la direccion de memoria de la pila aux
     while(!pilavacia(&p)){
         apilar(q, desapilar(&p));
     }
@@ -137,4 +138,11 @@ void pasarElementosConservandoOrden(Pila p, Pila *q){
 
     pasarElementos(p, &aux);
     pasarElementos(aux, q);
+}
+
+int encuentraEliminaRetornaMenorValor(Pila *p){
+    Pila aux;
+    inicpila(&aux);
+
+
 }
