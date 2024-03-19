@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1709600689 source:c:\users\loren\onedrive\escritorio\utn\primer-cuatrimestre\programacion-i\tp2\funciones-con-pilas\tp-funciones-con-pilas-c\funciones-con-pilas\pila.c
+	"pila.h"
+
+1709600689 c:\users\loren\onedrive\escritorio\utn\primer-cuatrimestre\programacion-i\tp2\funciones-con-pilas\tp-funciones-con-pilas-c\funciones-con-pilas\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1710812841 source:c:\users\loren\onedrive\escritorio\utn\primer-cuatrimestre\programacion-i\tp2\funciones-con-pilas\tp-funciones-con-pilas-c\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"pila.h"
+
+1709600689 c:\users\loren\onedrive\escritorio\utn\primer-cuatrimestre\programacion-i\tp2\funciones-con-pilas\tp-funciones-con-pilas-c\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1709600689 source:c:\users\loren\onedrive\escritorio\utn\primer-cuatrimestre\programacion-i\tp2\funciones-con-pilas\tp-funciones-con-pilas-c\pila.c
+	"pila.h"
+
