@@ -196,15 +196,12 @@ void pasarElementosANuevaPilaOrdenada(Pila p, Pila *q){
     Pila aux;
     inicpila(&aux);
 
-    aux = p;
+    pasarElementos(p, &aux);
 
-    printf("Pila aux");
-    mostrar(&aux);
-
-    while(!pilavacia(&p)){
-        int menor = encuentraEliminaRetornaMenorValor(&p);
+    while(!pilavacia(&aux)){
+        int menor = encuentraEliminaRetornaMenorValor(&aux);
         apilar(q, menor);
     }
-
-    pasarElementos(aux, &p);
 }
+
+
