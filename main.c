@@ -7,6 +7,7 @@ void cargarPila(Pila *p);
 void pasarElementos(Pila p, Pila *q);
 void pasarElementosConservandoOrden(Pila p, Pila *q);
 int encuentraEliminaRetornaMenorValor(Pila *p);
+void pasarElementosANuevaPilaOrdenada(Pila p, Pila *q);
 
 int main()
 {
@@ -77,12 +78,33 @@ int main()
 
                 int menor;
 
+                printf("DADA");
+                mostrar(&dada);
+
                 menor = encuentraEliminaRetornaMenorValor(&dada);
 
+                printf("DADA");
+                mostrar(&dada);
+
                 printf("El menor de los valores: %i", menor);
+
                 break;
             case 5:
                 printf("5. Hacer una funcion que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funcion del ejercicio 4. (Ordenamiento por selección)\n\n");
+
+                Pila aux3;
+                inicpila(&aux3);
+
+                printf("DADA");
+                mostrar(&dada);
+
+                pasarElementosANuevaPilaOrdenada(dada, &aux3);
+
+                printf("DADA");
+                mostrar(&dada);
+                printf("AUX3");
+                mostrar(&aux3);
+
                 break;
             case 6:
                 printf("6. Hacer una funcion que inserta en una pila ordenada un nuevo elemento, conservando el orden de esta.\n\n");
@@ -150,15 +172,39 @@ int encuentraEliminaRetornaMenorValor(Pila *p){
     Pila aux;
     inicpila(&aux);
 
-    int menor = tope(p);
+    int menor;
+
+    if(!pilavacia(p)){
+        menor = desapilar(p);
+    }
 
     while(!pilavacia(p)){
         if(menor > tope(p)){
-            menor = tope(p);
+            apilar(&aux, menor);
+            menor = desapilar(p);
+        } else {
+            apilar(&aux, desapilar(p));
         }
-        apilar(&aux, desapilar(p));
     }
+
     pasarElementos(aux, p);
 
     return menor;
+}
+
+void pasarElementosANuevaPilaOrdenada(Pila p, Pila *q){
+    Pila aux;
+    inicpila(&aux);
+
+    aux = p;
+
+    printf("Pila aux");
+    mostrar(&aux);
+
+    while(!pilavacia(&p)){
+        int menor = encuentraEliminaRetornaMenorValor(&p);
+        apilar(q, menor);
+    }
+
+    pasarElementos(aux, &p);
 }
