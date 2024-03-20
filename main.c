@@ -74,6 +74,12 @@ int main()
                 break;
             case 4:
                 printf("4. Hacer una funcion que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.\n\n");
+
+                int menor;
+
+                menor = encuentraEliminaRetornaMenorValor(&dada);
+
+                printf("El menor de los valores: %i", menor);
                 break;
             case 5:
                 printf("5. Hacer una funcion que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funcion del ejercicio 4. (Ordenamiento por selección)\n\n");
@@ -144,5 +150,15 @@ int encuentraEliminaRetornaMenorValor(Pila *p){
     Pila aux;
     inicpila(&aux);
 
+    int menor = tope(p);
 
+    while(!pilavacia(p)){
+        if(menor > tope(p)){
+            menor = tope(p);
+        }
+        apilar(&aux, desapilar(p));
+    }
+    pasarElementos(aux, p);
+
+    return menor;
 }
