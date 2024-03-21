@@ -8,9 +8,14 @@ void pasarElementos(Pila p, Pila *q);
 void pasarElementosConservandoOrden(Pila p, Pila *q);
 int encuentraEliminaRetornaMenorValor(Pila *p);
 void pasarElementosANuevaPilaOrdenada(Pila p, Pila *q);
-///void insertarDatoEnOrden(Pila *p, int *dato);
-void insertarDatoEnOrden(Pila *p, Pila *q);
+void insertarDatoEnOrden(Pila *p, int dato);
+///void insertarDatoEnOrden(Pila *p, Pila *q);
 void insertarPilaDesordenadaEnOrdenada(Pila *p, Pila *q);
+int retornaSumaTopeYAnterior(Pila p);
+int sumaElementosPila(Pila p);
+int cantidadElementosPila(Pila p);
+float divisionSumaCantidad(int p, int q);
+float promedioElementosPila(Pila p);
 
 int main()
 {
@@ -41,7 +46,7 @@ int main()
 
         switch(opcion){
             case 1:
-                printf("1. Hacer una funcion que permita ingresar varios elementos a una pila, tanto como quiera el usuario.\n\n");
+                printf("1. Hacer una función que permita ingresar varios elementos a una pila, tanto como quiera el usuario.\n\n");
 
                 cargarPila(&dada);
 
@@ -49,7 +54,7 @@ int main()
 
                 break;
             case 2:
-                printf("2. Hacer una funcion que pase todos los elementos de una pila a otra.\n\n");
+                printf("2. Hacer una función que pase todos los elementos de una pila a otra.\n\n");
 
                 Pila aux;
                 inicpila(&aux);
@@ -63,7 +68,7 @@ int main()
 
                 break;
             case 3:
-                printf("3. Hacer una funcion que pase todos los elementos de una pila a otra, pero conservando el orden.\n\n");
+                printf("3. Hacer una función que pase todos los elementos de una pila a otra, pero conservando el orden.\n\n");
 
                 Pila aux2;
                 inicpila(&aux2);
@@ -77,7 +82,7 @@ int main()
 
                 break;
             case 4:
-                printf("4. Hacer una funcion que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.\n\n");
+                printf("4. Hacer una función que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.\n\n");
 
                 int menor;
 
@@ -93,7 +98,7 @@ int main()
 
                 break;
             case 5:
-                printf("5. Hacer una funcion que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funcion del ejercicio 4. (Ordenamiento por selección)\n\n");
+                printf("5. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 4. (Ordenamiento por selección)\n\n");
 
                 Pila aux3;
                 inicpila(&aux3);
@@ -110,19 +115,19 @@ int main()
 
                 break;
             case 6:
-                printf("6. Hacer una funcion que inserta en una pila ordenada un nuevo elemento, conservando el orden de esta.\n\n");
+                printf("6. Hacer una función que inserta en una pila ordenada un nuevo elemento, conservando el orden de ésta.\n\n");
 
-                /**int elemento = 0;
+                int elemento = 0;
 
                 printf("Ingrese el elemento que desee introducir a la pila: ");
                 scanf("%d", &elemento);
 
-                insertarDatoEnOrden(&dada, &elemento);
+                insertarDatoEnOrden(&dada, elemento);
 
                 printf("DADA con elemento ingresado: ");
-                mostrar(&dada);*/
+                mostrar(&dada);
 
-                Pila elemento;
+                /**Pila elemento;
                 inicpila(&elemento);
 
                 printf("Ingresar el elemento que desee introducir a la pila: \n");
@@ -131,36 +136,67 @@ int main()
                 insertarDatoEnOrden(&dada, &elemento);
 
                 printf("DADA con elemento ingresado: ");
-                mostrar(&dada);
+                mostrar(&dada);*/
 
                 break;
             case 7:
-                printf("7. Hacer una funcion que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funcion del ejercicio 6.  (Ordenamiento por inserción)\n\n");
+                printf("7. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 6.  (Ordenamiento por inserción)\n\n");
 
                 Pila desordenada;
+                Pila ordenada;
                 inicpila(&desordenada);
+                inicpila(&ordenada);
 
                 cargarPila(&desordenada);
 
                 printf("DESORDENADA");
                 mostrar(&desordenada);
-                printf("DADA ordenada");
-                mostrar(&dada);
+                printf("ORDENADA vacia");
+                mostrar(&ordenada);
 
-                insertarPilaDesordenadaEnOrdenada(&dada, &desordenada);
+                insertarPilaDesordenadaEnOrdenada(&ordenada, &desordenada);
 
-                printf("DADA + DESORDENADA, ordenadas");
-                mostrar(&dada);
+                printf("ORDENADA");
+                mostrar(&ordenada);
 
                 break;
             case 8:
-                printf("8. Hacer una funcion que sume y retorne los dos primeros elementos de una pila (tope y anterior), sin alterar su contenido.\n\n");
+                printf("8. Hacer una función que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila.\n\n");
+
+                int sumaTopeYAnterior = 0;
+
+                sumaTopeYAnterior = retornaSumaTopeYAnterior(dada);
+
+                printf("El resultado de la suma del tope de la pila y su anterior es: %i", sumaTopeYAnterior);
+
                 break;
             case 9:
-                printf("9. Hacer una funcion que calcule el promedio de los elementos de una pila, para ello hacer tambien una funcion que calcule la suma, otra para la cuenta y otra que divida. En total son cuatro funciones, y la funcion que calcula el promedio invoca a las otras 3.\n\n");
+                printf("9. Hacer una función que calcule el promedio de los elementos de una pila, para ello hacer también una función que calcule la suma, otra para la cuenta y otra que divida. En total son cuatro funciones, y la función que calcula el promedio invoca a las otras 3.\n\n");
+
+                /**int sumaElementos = 0;
+                int cantidadElementos = 0;
+                float division = 0;
+
+                sumaElementos = sumaElementosPila(dada);
+                cantidadElementos = cantidadElementosPila(dada);
+                division = divisionSumaCantidad(sumaElementos, cantidadElementos);
+
+                printf("Suma de elementos de la pila: %i", sumaElementos);
+                printf("\nCantidad de elementos de la pila: %i", cantidadElementos);
+                printf("\nResultado de la division de la suma de elementos y la cantidad: %.2f", division);*/
+
+                float promedio = 0;
+
+                promedio = promedioElementosPila(dada);
+
+                printf("El promedio de los elementos de una pila es: %.2f", promedio);
+
                 break;
             case 10:
                 printf("10. Hacer una funcion que reciba una pila con numeros de un solo digito (es responsabilidad de quien usa el programa) y que transforme esos digitos en un numero decimal.\n\n");
+
+
+
                 break;
             case 11:
                 printf("Realizar una funcion que cargue la pila sin utilizar la funcion leer.\n\n");
@@ -245,22 +281,22 @@ void pasarElementosANuevaPilaOrdenada(Pila p, Pila *q){
     }
 }
 
-/// Si el dato fuera un numero entero
-
-/**void insertarDatoEnOrden(Pila *p, int *dato){
+void insertarDatoEnOrden(Pila *p, int dato){
     Pila aux;
     inicpila(&aux);
 
-    while(!pilavacia(p) && *dato < tope(p)){
+    while(!pilavacia(p) && dato < tope(p)){
         apilar(&aux, desapilar(p));
     }
 
-    apilar(p, *dato);
+    apilar(p, dato);
 
     pasarElementos(aux, p);
-}*/
+}
 
-void insertarDatoEnOrden(Pila *p, Pila *q){
+/// Si el dato fuera una pila
+
+/**void insertarDatoEnOrden(Pila *p, Pila *q){
     Pila aux;
     inicpila(&aux);
 
@@ -271,10 +307,63 @@ void insertarDatoEnOrden(Pila *p, Pila *q){
     apilar(p, desapilar(q));
 
     pasarElementos(aux, p);
-}
+}**/
 
 void insertarPilaDesordenadaEnOrdenada(Pila *p, Pila *q){
     while(!pilavacia(q)){
-        insertarDatoEnOrden(p, q);
+        insertarDatoEnOrden(p, desapilar(q));
     }
+}
+
+int retornaSumaTopeYAnterior(Pila p){
+    int suma = 0;
+
+    if(!pilavacia(&p)){
+        suma += desapilar(&p);
+        if(!pilavacia(&p)){
+            suma += desapilar(&p);
+        }
+    }
+
+    return suma;
+}
+
+int sumaElementosPila(Pila p){
+    int suma = 0;
+
+    while(!pilavacia(&p)){
+        suma += desapilar(&p);
+    }
+
+    return suma;
+}
+
+int cantidadElementosPila(Pila p){
+    int contador = 0;
+
+    while(!pilavacia(&p)){
+        contador ++;
+        desapilar(&p);
+    }
+
+    return contador;
+}
+
+float divisionSumaCantidad(int p, int q){
+    int division = 0;
+
+    division = (float) p / q;
+
+    return division;
+}
+
+float promedioElementosPila(Pila p){
+    float promedio = 0;
+    int suma = 0, cantidad = 0;
+
+    suma = sumaElementosPila(p);
+    cantidad = cantidadElementosPila(p);
+    promedio = divisionSumaCantidad(suma, cantidad);
+
+    return promedio;
 }
