@@ -16,6 +16,7 @@ int sumaElementosPila(Pila p);
 int cantidadElementosPila(Pila p);
 float divisionSumaCantidad(int p, int q);
 float promedioElementosPila(Pila p);
+int ElementosPilaADecimal(Pila p);
 
 int main()
 {
@@ -195,7 +196,11 @@ int main()
             case 10:
                 printf("10. Hacer una funcion que reciba una pila con numeros de un solo digito (es responsabilidad de quien usa el programa) y que transforme esos digitos en un numero decimal.\n\n");
 
+                int numeroDecimal = 0;
 
+                numeroDecimal = ElementosPilaADecimal(dada);
+
+                printf("El numero decimal que se forma con los elementos de la pila es: %i", numeroDecimal);
 
                 break;
             case 11:
@@ -366,4 +371,16 @@ float promedioElementosPila(Pila p){
     promedio = divisionSumaCantidad(suma, cantidad);
 
     return promedio;
+}
+
+int ElementosPilaADecimal(Pila p){
+    int decimal = 0;
+    int multiplicador = 1;
+
+    while(!pilavacia(&p)){
+        decimal += desapilar(&p) * multiplicador;
+        multiplicador *= 10;
+    }
+
+    return decimal;
 }
